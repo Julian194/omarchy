@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Sync Omarchy theme to pi coding agent.
+
+omarchy-cmd-present pi && [[ ! -f $HOME/.local/state/omarchy/toggles/skip-pi-theme-changes ]] || exit 0
+
+PI_THEME="$HOME/.config/omarchy/current/theme/pi-theme.json"
+PI_THEMES_DIR="$HOME/.pi/agent/themes"
+OUTPUT="$PI_THEMES_DIR/omarchy.json"
+
+if [[ -f $PI_THEME ]]; then
+  mkdir -p "$PI_THEMES_DIR"
+  cp "$PI_THEME" "$OUTPUT"
+fi
